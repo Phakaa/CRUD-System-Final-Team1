@@ -1,189 +1,154 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>SETEC POS System</title>
-	<link rel="stylesheet" href="../css/pos_system.css">
-	<script src="../js/pos_system.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SETEC POS System</title>
+    <link rel="stylesheet" href="../css/pos_system.css">
+    <script src="../js/pos_system.js" defer></script>
 </head>
 <body>
-	<div class="container">
-		<div class="sidebar">
-			<ul>
-				<li>Dashboard</li>
-				<li class="dropdown">
-					<span>Products ▼</span>
-					<ul class="dropdown-content">
-						<li id="add-product-nav">Add Product</li>
-						<li id="list-product-nav">List Products</li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<span>Categories ▼</span>
-					<ul class="dropdown-content">
-						<li id="add-category-nav">Add Category</li>
-						<li id="list-category-nav">List Categories</li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<span>Orders ▼</span>
-					<ul class="dropdown-content">
-						<li id="add-order-nav">Add Order</li>
-						<li id="list-order-nav">List Orders</li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<span>Users ▼</span>
-					<ul class="dropdown-content">
-						<li id="add-user-nav">Add User</li>
-						<li id="list-user-nav">List Users</li>
-					</ul>
-				</li>
-				<li>Setting</li>
-			</ul>
-		</div>
-		<div class="main-content">
-			<div id="dashboard-section" class="section">
-				<div class="dashboard-cards">
-					<div class="dashboard-card products-card">
-						<div class="dashboard-card-count" id="dashboard-products-count">0</div>
-						<div>Products</div>
-						<button class="dashboard-more-info" id="dashboard-products-more">More info</button>
-					</div>
-					<div class="dashboard-card orders-card">
-						<div class="dashboard-card-count" id="dashboard-orders-count">0</div>
-						<div>Orders</div>
-						<button class="dashboard-more-info" id="dashboard-orders-more">More info</button>
-					</div>
-					<div class="dashboard-card categories-card">
-						<div class="dashboard-card-count" id="dashboard-categories-count">0</div>
-						<div>Categories</div>
-						<button class="dashboard-more-info" id="dashboard-categories-more">More info</button>
-					</div>
-					<div class="dashboard-card users-card">
-						<div class="dashboard-card-count" id="dashboard-users-count">0</div>
-						<div>Users</div>
-						<button class="dashboard-more-info" id="dashboard-users-more">More info</button>
-					</div>
-				</div>
-				<h3>Products Overview</h3>
-				<table id="dashboard-products-table">
-					<thead>
-						<tr><th>#</th><th>Product Name</th><th>Price</th><th>Qty</th><th>Category</th><th>Description</th></tr>
-					</thead>
-					<tbody></tbody>
-				</table>
-				<h3>Categories Overview</h3>
-				<table id="dashboard-categories-table">
-					<thead>
-						<tr><th>#</th><th>Category Name</th></tr>
-					</thead>
-					<tbody></tbody>
-				</table>
-				<h3>Orders Overview</h3>
-				<table id="dashboard-orders-table">
-					<thead>
-						<tr><th>#</th><th>Order Name</th><th>QTY</th><th>Date</th><th>Product</th></tr>
-					</thead>
-					<tbody></tbody>
-				</table>
-				<h3>Users Overview</h3>
-				<table id="dashboard-users-table">
-					<thead>
-						<tr><th>#</th><th>User Name</th><th>Email</th><th>Phone</th></tr>
-					</thead>
-					<tbody></tbody>
-				</table>
-			</div>
-			<div id="add-product-section" class="section" style="display:none;">
-				<h2>Add Product</h2>
-				<form id="add-product-form">
-					<input type="text" placeholder="Product Name" name="product_name" required><br>
-					<input type="number" placeholder="Price" name="price" required><br>
-					<input type="number" placeholder="Quantity" name="qty" required><br>
-					<select name="category_id" required id="product-category-select">
-						<option value="">Select Category</option>
-					</select><br>
-					<textarea placeholder="Description" name="description"></textarea><br>
-					<button type="submit">Save Product</button>
-				</form>
-			</div>
-			<div id="list-product-section" class="section" style="display:none;">
-				<h2>List Products</h2>
-				<table id="product-list-table">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Product Name</th>
-							<th>Price</th>
-							<th>Qty</th>
-							<th>Category</th>
-							<th>Description</th>
-							<th>Actions</th>
-						</tr>
-					</thead>
-					<tbody>
-					</tbody>
-				</table>
-			</div>
-			<div id="add-category-section" class="section" style="display:none;">
-				<h2>Add Category</h2>
-				<form id="add-category-form">
-					<input type="text" placeholder="Category Name" name="category_name" required><br>
-					<button type="submit">Save Category</button>
-				</form>
-			</div>
-			<div id="list-category-section" class="section" style="display:none;">
-				<h2>List Categories</h2>
-				<table id="category-list-table">
-					<thead>
-						<tr><th>#</th><th>Category Name</th><th>Actions</th></tr>
-					</thead>
-					<tbody></tbody>
-				</table>
-			</div>
-			<div id="add-order-section" class="section" style="display:none;">
-				<h2>Add Order</h2>
-				<form id="add-order-form">
-					<input type="text" placeholder="Order Name" name="order_name" required><br>
-					<input type="number" placeholder="Quantity" name="qty" required><br>
-					<input type="date" placeholder="Date" name="date" required><br>
-					<select name="product_id" required id="order-product-select">
-						<option value="">Select Product</option>
-					</select><br>
-					<button type="submit">Save Order</button>
-				</form>
-			</div>
-			<div id="list-order-section" class="section" style="display:none;">
-				<h2>List Orders</h2>
-				<table id="order-list-table">
-					<thead>
-						<tr><th>#</th><th>Order Name</th><th>QTY</th><th>Date</th><th>Product</th><th>Actions</th></tr>
-					</thead>
-					<tbody></tbody>
-				</table>
-			</div>
-			<div id="add-user-section" class="section" style="display:none;">
-				<h2>Add User</h2>
-				<form id="add-user-form">
-					<input type="text" placeholder="User Name" name="username" required><br>
-					<input type="email" placeholder="Email" name="email" required><br>
-					<input type="text" placeholder="Phone" name="phone" required><br>
-					<button type="submit">Save User</button>
-				</form>
-			</div>
-			<div id="list-user-section" class="section" style="display:none;">
-				<h2>List Users</h2>
-				<table id="user-list-table">
-					<thead>
-						<tr><th>#</th><th>User Name</th><th>Email</th><th>Phone</th><th>Actions</th></tr>
-					</thead>
-					<tbody></tbody>
-				</table>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li data-section="dashboard-section">Dashboard</li>
+                <li class="dropdown">
+                    <span>Products ▼</span>
+                    <ul class="dropdown-content">
+                        <li data-section="add-product-section">Add Product</li>
+                        <li data-section="list-product-section">List Products</li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <span>Categories ▼</span>
+                    <ul class="dropdown-content">
+                        <li data-section="add-category-section">Add Category</li>
+                        <li data-section="list-category-section">List Categories</li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <span>Orders ▼</span>
+                    <ul class="dropdown-content">
+                        <li data-section="add-order-section">Add Order</li>
+                        <li data-section="list-order-section">List Orders</li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <span>Users ▼</span>
+                    <ul class="dropdown-content">
+                        <li data-section="add-user-section">Add User</li>
+                        <li data-section="list-user-section">List Users</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div id="dashboard-section" class="section">
+                <div class="dashboard-cards">
+                    <div class="dashboard-card products-card">
+                        <div class="dashboard-card-count" id="dashboard-products-count">0</div>
+                        <div>Products</div>
+                        <button class="dashboard-more-info" data-section="list-product-section">More info</button>
+                    </div>
+                    <div class="dashboard-card orders-card">
+                        <div class="dashboard-card-count" id="dashboard-orders-count">0</div>
+                        <div>Orders</div>
+                        <button class="dashboard-more-info" data-section="list-order-section">More info</button>
+                    </div>
+                    <div class="dashboard-card categories-card">
+                        <div class="dashboard-card-count" id="dashboard-categories-count">0</div>
+                        <div>Categories</div>
+                        <button class="dashboard-more-info" data-section="list-category-section">More info</button>
+                    </div>
+                    <div class="dashboard-card users-card">
+                        <div class="dashboard-card-count" id="dashboard-users-count">0</div>
+                        <div>Users</div>
+                        <button class="dashboard-more-info" data-section="list-user-section">More info</button>
+                    </div>
+                </div>
+                
+                <h2>Dashboard Overviews</h2>
+                <div class="overviews-container">
+                    <h3>Product Overview</h3>
+                    <table class="table-products"><thead><tr><th>#</th><th>Name</th><th>Price</th><th>Qty</th><th>Category</th></tr></thead><tbody></tbody></table>
+                    
+                    <h3>Category Overview</h3>
+                    <table class="table-categories"><thead><tr><th>#</th><th>Category Name</th></tr></thead><tbody></tbody></table>
+                    
+                    <h3>Order Overview</h3>
+                    <table class="table-orders"><thead><tr><th>#</th><th>Order Name</th><th>Qty</th><th>Date</th><th>Product</th></tr></thead><tbody></tbody></table>
+                    
+                    <h3>User Overview</h3>
+                    <table class="table-users"><thead><tr><th>#</th><th>Username</th><th>Email</th><th>Phone</th></tr></thead><tbody></tbody></table>
+                </div>
+            </div>
+
+            <div id="add-product-section" class="section" style="display:none;">
+                <h2>Add Product</h2>
+                <form id="add-product-form">
+                    <input type="text" placeholder="Product Name" name="product_name" required>
+                    <input type="number" placeholder="Price" name="price" required>
+                    <input type="number" placeholder="Quantity" name="qty" required>
+                    <select name="category_id" class="cat-select" required></select>
+                    <textarea placeholder="Description" name="description"></textarea>
+                    <button type="submit">Save Product</button>
+                </form>
+                <hr>
+                <table class="table-products"><thead><tr><th>#</th><th>Name</th><th>Price</th><th>Qty</th><th>Category</th></tr></thead><tbody></tbody></table>
+            </div>
+            <div id="list-product-section" class="section" style="display:none;">
+                <h2>Product List</h2>
+                <table class="table-products"><thead><tr><th>#</th><th>Name</th><th>Price</th><th>Qty</th><th>Category</th></tr></thead><tbody></tbody></table>
+            </div>
+
+            <div id="add-category-section" class="section" style="display:none;">
+                <h2>Add Category</h2>
+                <form id="add-category-form">
+                    <input type="text" placeholder="Category Name" name="category_name" required>
+                    <button type="submit">Save Category</button>
+                </form>
+                <hr>
+                <table class="table-categories"><thead><tr><th>#</th><th>Category Name</th></tr></thead><tbody></tbody></table>
+            </div>
+            <div id="list-category-section" class="section" style="display:none;">
+                <h2>Category List</h2>
+                <table class="table-categories"><thead><tr><th>#</th><th>Category Name</th></tr></thead><tbody></tbody></table>
+            </div>
+
+            <div id="add-order-section" class="section" style="display:none;">
+                <h2>Add Order</h2>
+                <form id="add-order-form">
+                    <input type="text" placeholder="Order Name" name="order_name" required>
+                    <input type="number" placeholder="Quantity" name="qty" required>
+                    <input type="date" name="date" required>
+                    <select name="product_id" class="prod-select" required></select>
+                    <button type="submit">Save Order</button>
+                </form>
+                <hr>
+                <table class="table-orders"><thead><tr><th>#</th><th>Order Name</th><th>Qty</th><th>Date</th><th>Product</th></tr></thead><tbody></tbody></table>
+            </div>
+            <div id="list-order-section" class="section" style="display:none;">
+                <h2>Order List</h2>
+                <table class="table-orders"><thead><tr><th>#</th><th>Order Name</th><th>Qty</th><th>Date</th><th>Product</th></tr></thead><tbody></tbody></table>
+            </div>
+
+            <div id="add-user-section" class="section" style="display:none;">
+                <h2>Add User</h2>
+                <form id="add-user-form">
+                    <input type="text" placeholder="Username" name="username" required>
+                    <input type="email" placeholder="Email" name="email" required>
+                    <input type="text" placeholder="Phone" name="phone" required>
+                    <button type="submit">Save User</button>
+                </form>
+                <hr>
+                <table class="table-users"><thead><tr><th>#</th><th>Username</th><th>Email</th><th>Phone</th></tr></thead><tbody></tbody></table>
+            </div>
+            <div id="list-user-section" class="section" style="display:none;">
+                <h2>User List</h2>
+                <table class="table-users"><thead><tr><th>#</th><th>Username</th><th>Email</th><th>Phone</th></tr></thead><tbody></tbody></table>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
