@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+.sidebar {
+    width: 220px;
+    background: #2c3e50;
+    color: #fff;
+    padding-top: 20px;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar ul li {
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.sidebar ul li:hover, .sidebar ul li.active {
+    background: #34495e;
+}
+.sidebar .dropdown > span {
+    display: block;
+    font-weight: bold;
+}
+.sidebar .dropdown-content {
+    display: none;
+    background: #34495e;
+    margin-left: 10px;
+    border-radius: 4px;
+}
+.sidebar .dropdown:hover .dropdown-content {
+    display: block;
+}
+.sidebar .dropdown-content li {
+    padding: 8px 20px;
+    font-size: 14px;
+}
+.main-content {
+    flex: 1;
+    padding: 32px;
+    background: #fff;
+}
+.section {
+    margin-bottom: 32px;
+}
+form input, form select, form textarea {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+form button {
+    background: #2980b9;
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+form button:hover {
+    background: #3498db;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+table th {
+    background: #f4f6f8;
+}
