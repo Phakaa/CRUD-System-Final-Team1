@@ -29,9 +29,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         renderRows('.table-products', products, p => `<td>${p.product_name}</td><td>${p.price}</td><td>${p.qty}</td><td>${getCatName(p.category_id)}</td>`);
-        renderRows('.table-categories', categories, c => `<td>${c.category_name}</td>`);
-        renderRows('.table-orders', orders, o => `<td>${o.order_name}</td><td>${o.qty}</td><td>${o.date}</td><td>${getProdName(o.product_id)}</td>`);
-        renderRows('.table-users', users, u => `<td>${u.username}</td><td>${u.email}</td><td>${u.phone}</td>`);
+        renderRows('.table-products', products, p => `
+            <td>${p.product_name}</td><td>${p.price}</td><td>${p.qty}</td><td>${getCatName(p.category_id)}</td>
+            <td>
+                <button class="btn-edit" onclick="editItem('products', 'pid', ${p.pid}, ['product_name', 'price', 'qty'])">Edit</button>
+                <button class="btn-del" onclick="deleteItem('products', 'pid', ${p.pid})">Delete</button>
+            </td>`);
+        renderRows('.table-categories', categories, c => `
+            <td>${c.category_name}</td>
+            <td>
+                <button class="btn-edit" onclick="editItem('categories', 'cid', ${c.cid}, ['category_name'])">Edit</button>
+                <button class="btn-del" onclick="deleteItem('categories', 'cid', ${c.cid})">Delete</button>
+            </td>`);
+        renderRows('.table-orders', orders, o => `
+            <td>${o.order_name}</td><td>${o.qty}</td><td>${o.date}</td><td>${getProdName(o.product_id)}</td>
+            <td>
+                <button class="btn-edit" onclick="editItem('orders', 'oid', ${o.oid}, ['order_name', 'qty', 'date'])">Edit</button>
+                <button class="btn-del" onclick="deleteItem('orders', 'oid', ${o.oid})">Delete</button>
+            </td>`);
+        renderRows('.table-users', users, u => `
+            <td>${u.username}</td><td>${u.email}</td><td>${u.phone}</td>
+            <td>
+                <button class="btn-edit" onclick="editItem('users', 'uid', ${u.uid}, ['username', 'email', 'phone'])">Edit</button>
+                <button class="btn-del" onclick="deleteItem('users', 'uid', ${u.uid})">Delete</button>
+            </td>`);
         renderRows('#list-product-section .table-products', products, p => `
             <td>${p.product_name}</td><td>${p.price}</td><td>${p.qty}</td><td>${getCatName(p.category_id)}</td>
             <td>
