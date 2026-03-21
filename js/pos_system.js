@@ -8,6 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const getCatName = (id) => db.get('categories').find(c => c.cid == id)?.category_name || "N/A";
     const getProdName = (id) => db.get('products').find(p => p.pid == id)?.product_name || "N/A";
 
+    // Menu button toggle for sidebar
+    const menuBtn = document.querySelector('.menu-btnn');
+    const container = document.querySelector('.container');
+    menuBtn.addEventListener('click', () => {
+        container.classList.toggle('sidebar-closed');
+    });
+
     function refreshSystem() {
         const categories = db.get('categories');
         const products = db.get('products');

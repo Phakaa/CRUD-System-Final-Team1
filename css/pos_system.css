@@ -22,6 +22,7 @@ body {
     box-shadow: 3px 0 18px rgba(0, 0, 0, 0.2);
     z-index: 10;
     overflow-y: auto;
+    transition: width 0.3s ease, min-width 0.3s ease, padding 0.3s ease;
 }
 .sidebar-logo {
     display: flex;
@@ -313,7 +314,13 @@ table th {
     color: #333;
 }
 
-/* optional hover effect */
-.menu-btn:hover {
-    color: #000000;
+.container.sidebar-closed .sidebar {
+    width: 0;
+    min-width: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.container.sidebar-closed .main-content {
+    flex: 1;
 }
